@@ -13,12 +13,15 @@ public class Custom_Queue<T> extends Custom_LinkedList<T> {
 		super();
 	}
 
-	void enQueue(T data) {
-		super.append(new Node(data, null));
+	public void enQueue(T data) {
+		super.append(new Node(data));
 	}
 
-	T DeQueue() {
-		return super.delFirst().data;
+	public T DeQueue() {
+		if (!empty()) {
+			return super.delFirst().data;
+		}
+		throw new RuntimeException("不存在的元素");
 	}
 
 	public static void main(String[] args) {

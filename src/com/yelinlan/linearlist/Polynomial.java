@@ -36,7 +36,7 @@ public class Polynomial {
 	}
 
 	void createPoly(Elem e, BiFunction<Elem, Elem, Integer> compare) {
-		Custom_LinkedList<Elem>.Node node = polynomial.new Node(e, null);
+		Custom_LinkedList<Elem>.Node node = polynomial.new Node(e);
 		if (polynomial.length == 0) {
 			polynomial.append(node);
 		} else {

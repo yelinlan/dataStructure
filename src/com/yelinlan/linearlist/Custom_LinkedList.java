@@ -21,8 +21,13 @@ public class Custom_LinkedList<T> {
 			this.next = next;
 		}
 
+		public Node(T data) {
+			this.data = data;
+			this.next = null;
+		}
+
 		public Node copy(){
-			return new Node(data,null);
+			return new Node(data);
 		}
 
 	}
@@ -32,7 +37,7 @@ public class Custom_LinkedList<T> {
 	public int length;
 
 	public Custom_LinkedList() {
-		Node node = new Node(null, null);
+		Node node = new Node(null);
 		this.head = node;
 		this.tail = node;
 		this.length = 0;
@@ -123,7 +128,7 @@ public class Custom_LinkedList<T> {
 		return p.data;
 	}
 
-	boolean empty() {
+	public boolean empty() {
 		return length == 0;
 	}
 
@@ -216,7 +221,7 @@ public class Custom_LinkedList<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	void traverse(Consumer visit) {
+	public void traverse(Consumer visit) {
 		System.out.println("=================content===============");
 		Node p = head.next;
 		while (p != null) {
@@ -237,13 +242,13 @@ public class Custom_LinkedList<T> {
 			if (compare.apply(head_a.data, head_b.data) <= 0) {
 				head_a = head_a.next;
 			} else {
-				insertBefore(head_a, new Node(head_b.data, null));
+				insertBefore(head_a, new Node(head_b.data));
 				head_b = head_b.next;
 			}
 		}
 
 		while (head_b != null) {
-			append(new Node(head_b.data, null));
+			append(new Node(head_b.data));
 			head_b = head_b.next;
 		}
 		return this;
@@ -252,15 +257,15 @@ public class Custom_LinkedList<T> {
 
 	public static void main(String[] args) {
 		Custom_LinkedList<String> list = new Custom_LinkedList<>();
-		list.append(list.new Node("1", null));
-		list.append(list.new Node("2", null));
-		list.insert(100, list.new Node("3", null));
+		list.append(list.new Node("1"));
+		list.append(list.new Node("2"));
+		list.insert(100, list.new Node("3"));
 		list.delete(2);
 		list.traverse(System.out::println);
 		Custom_LinkedList<String> list1 = new Custom_LinkedList<>();
-		list1.append(list1.new Node("1", null));
-		list1.insert(100, list1.new Node("2", null));
-				list1.append(list1.new Node("3", null));
+		list1.append(list1.new Node("1"));
+		list1.insert(100, list1.new Node("2"));
+				list1.append(list1.new Node("3"));
 				list1.delete(2);
 		list1.traverse(System.out::println);
 		list.merge(list1, String::compareTo);

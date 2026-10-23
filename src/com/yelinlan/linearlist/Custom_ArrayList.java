@@ -93,6 +93,7 @@ public class Custom_ArrayList<T> {
 	void traverse(Consumer visit) {
 		System.out.println("================================");
 		Arrays.stream(array, 0, length).forEach(visit);
+		System.out.println();
 	}
 
 	void autoGrow(int len) {

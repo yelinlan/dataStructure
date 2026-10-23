@@ -15,18 +15,18 @@ public class Custom_Stack<T> extends Custom_LinkedList<T> {
 		super();
 	}
 
-	T top() {
+	public T top() {
 		if (tail == head) {
 			throw new RuntimeException("栈顶元素不存在！");
 		}
 		return tail.data;
 	}
 
-	void push(T e) {
-		super.append(new Node(e, null));
+	public void push(T e) {
+		super.append(new Node(e));
 	}
 
-	T pop() {
+	public T pop() {
 		Node remove = super.remove();
 		if (remove == null) {
 			throw new RuntimeException("栈顶元素不存在！");
